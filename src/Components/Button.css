@@ -1,5 +1,5 @@
 :root {
-  --primary: #06C7F2;
+  --primary: #020202;
 }
 
 .btn {
@@ -65,14 +65,14 @@
 .btn--medium:hover,
 .btn--mobile:hover {
   transition: all 0.3s ease-out;
-  background: #049DD9;
+  background: #020202;
   color: #fff;
   outline: none;
 }
 
 .btn--wide:hover {
   color: #fff;
-  background-color: #049DD9;
+  background-color: #020202;
   transition: all 0.3s ease-out;
   font-weight: 600;
   font-size: 24px;
@@ -95,7 +95,7 @@
 }
 
 .blue {
-  background-color: #06C7F2;
+  background-color: #020202;
   color: #fff;
   border: none;
 }
@@ -107,14 +107,14 @@
 }
 
 .primary {
-  background-color: #03738B;
+  background-color: #020202;
   color: #fff;
   border: none;
 }
 
 .primary:hover {
   background-color: #fff;
-  color: #06C7F2;
+  color: #020202;
   border: none;
 }
 
