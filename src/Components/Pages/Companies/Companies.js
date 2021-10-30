@@ -7,10 +7,10 @@ import companyFour from '../../../Assets/four.png';
 const Companies = () => {
     return (
         <div className="company-section" style={{ height: '32px' }}>
-            <img style={{ height: '32px' }} src={companyOne} alt="" />
-            <img style={{ height: '32px' }} src={companyTwo} alt="" />
-            <img style={{ height: '32px' }} src={companyThree} alt="" />
-            <img style={{ height: '32px' }} src={companyFour} alt="" />
+            <img style={{ height: '32px', opacity: '20%' }} src={companyOne} alt="" />
+            <img style={{ height: '32px', opacity: '20%' }} src={companyTwo} alt="" />
+            <img style={{ height: '32px', opacity: '20%' }} src={companyThree} alt="" />
+            <img style={{ height: '32px', opacity: '20%' }} src={companyFour} alt="" />
         </div>
     );
 };

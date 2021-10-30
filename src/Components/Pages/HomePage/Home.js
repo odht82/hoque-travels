@@ -1,5 +1,4 @@
 import React from 'react';
-import HomeOffers from '../Offers/Offers';
 import HeroSection from '../HeroSection/HeroSection';
 import Activities from '../Activities/Activities';
 import Packages from '../Packages/Packages';

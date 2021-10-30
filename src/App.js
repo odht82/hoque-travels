@@ -10,8 +10,7 @@ import SignUp from './Components/Pages/SignUp/SignUp';
 import NotFound from './Components/Pages/NotFound/NotFound';
 import Footer from './Components/Pages/Footer/Footer';
 import Booking from './Components/Pages/Booking/Booking';
-import Places from './Components/Pages/Places/Places';
-import Offers from './Components/Pages/Offers/Offers';
+import Packages from "./Components/Pages/Packages/Packages";
 
 function App() {
   return (
@@ -26,19 +25,13 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route exact path="/places">
-              <Places></Places>
+            <Route exact path="/packages">
+              <Packages></Packages>
             </Route>
-            <PrivateRoute path="/places/bookings/:placeId">
+            <PrivateRoute path="/packages/bookings/:packageId">
               <Booking></Booking>
             </PrivateRoute>
-            <Route exact path="/offers">
-              <Offers></Offers>
-            </Route>
-            <PrivateRoute path="/offers/bookings/:offerId">
-              <Booking></Booking>
-            </PrivateRoute>
-            <PrivateRoute path="/home-offer/bookings/:homeofferId">
+            <PrivateRoute path="/home-packages/bookings/:homepackageId">
               <Booking></Booking>
             </PrivateRoute>
             <Route path="/sign-in">

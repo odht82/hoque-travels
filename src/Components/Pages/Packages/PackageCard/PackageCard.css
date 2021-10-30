@@ -1,0 +1,38 @@
+
+.package-card{
+    width: 306px;
+    height: 96px;
+    background: #FFFFFF;
+    border: 1px solid rgba(255, 132, 75, 0.4);
+    box-sizing: border-box;
+    border-radius: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 16px;
+}
+.package-card-img{
+    margin-right: 16px;
+}
+.package-card-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.package-card-heading{
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    color: #383838;
+}
+.package-card-properties{
+    margin: 0;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #383838;
+}
+
+
+
