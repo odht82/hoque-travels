@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import HomePackageCard from './HomePackageCard/HomePackageCard';
 import './HomePackages.css';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const HomePackages = () => {
     const [packages, setPackages] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/packages')
+        fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
             .then(data => setPackages(data));
     }, [])

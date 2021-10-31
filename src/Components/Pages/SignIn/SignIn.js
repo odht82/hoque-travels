@@ -1,7 +1,7 @@
 import { Button } from '../../Button';
 import './SignIn.css';
 import { AiFillGoogleCircle } from 'react-icons/ai';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { useEffect } from 'react';
 

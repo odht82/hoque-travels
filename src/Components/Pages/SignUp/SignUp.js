@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { Button } from '../../Button';
 import './SignUp.css';
-import { AiFillGoogleCircle, AiOutlineGithub } from 'react-icons/ai';
+import { AiFillGoogleCircle, } from 'react-icons/ai';
 import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
-import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePackageCard.css';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import placeholder from '../../../../Assets/placeholder.png';
 const HomePackageCard = (props) => {
     const { _id, place, name, activities, places, duration, price, pricetype, image } = props.pack;

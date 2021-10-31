@@ -17,15 +17,17 @@ const Service = () => {
     const [homepackages, setHomepackages] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/packages/${packageId}`)
+        fetch(`https://pure-island-82181.herokuapp.com/packages/${packageId}`)
             .then(res => res.json())
             .then(data => setPackages(data));
     }, [packageId]);
+
     useEffect(() => {
-        fetch(`http://localhost:5000/packages/${homepackageId}`)
+        fetch(`https://pure-island-82181.herokuapp.com/packages/${homepackageId}`)
             .then(res => res.json())
             .then(data => setHomepackages(data));
     }, [homepackageId]);
+
     return (
         <>
             <div className="details">

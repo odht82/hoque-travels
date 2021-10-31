@@ -1,7 +1,7 @@
 import React from 'react';
 import './BookingCard.css';
 const BookingCard = (props) => {
-    const { _id, place, name, activities, places, duration, price, image } = props.book;
+    const { place, name, activities, places, duration, price, image } = props.book;
     return (
         <section className="card-row">
             <div className="tabl-rw">

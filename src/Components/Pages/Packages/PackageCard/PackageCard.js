@@ -1,7 +1,7 @@
 import React from 'react';
 import './PackageCard.css';
 import placeholder from '../../../../Assets/placeholder.png';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const PackageCard = (props) => {
     const { _id, place, name, activities, places, duration, price, pricetype, image } = props.pack;
     return (
