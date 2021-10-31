@@ -46,32 +46,33 @@ const NavBar = () => {
                         </li>
                         <li className='nav-item'>
                             <NavLink activeStyle={{ fontWeight: '800', fontSize: '18px', color: '#FF844B' }}
-                                to='/products'
+                                to='/packages'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
                             >
-                                Special Deals
+                                Packages
                             </NavLink>
                         </li>
+
                         <li className='nav-item'>
                             <NavLink activeStyle={{ fontWeight: '800', fontSize: '18px', color: '#FF844B' }}
-                                to='/services'
-                                className='nav-links'
-                                onClick={closeMobileMenu}
-                            >
-                                Community
-                            </NavLink>
-                        </li>
-                        {!user.email && <li className='nav-item'>
-                            <NavLink activeStyle={{ fontWeight: '800', fontSize: '18px', color: '#FF844B' }}
-                                to='/pricing'
+                                to='/aboutUs'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
                             >
                                 About Us
                             </NavLink>
-                        </li>}
-
+                        </li>
+                        {user.email && <li className='nav-item'>
+                            <NavLink activeStyle={{ fontWeight: '800', fontSize: '18px', color: '#FF844B' }}
+                                to='/bookings'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                Bookings
+                            </NavLink>
+                        </li>
+                        }
                         <div className=" nav-menu-btn">
                             {user.email ?
                                 (<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

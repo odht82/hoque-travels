@@ -5,7 +5,7 @@ const Packages = () => {
     const [packages, setPackages] = useState([]);
 
     useEffect(() => {
-        fetch('https://pure-island-82181.herokuapp.com/packages')
+        fetch('http://localhost:5000/packages')
             .then(res => res.json())
             .then(data => setPackages(data));
     }, [])
@@ -21,7 +21,6 @@ const Packages = () => {
                         </span>
                         <p className="package-desc">Get the full package experience included with all of your needs on the trips</p>
                     </div>
-                    <button className="all-pkg-btn">View Packages</button>
                 </div>
                 <div className="package-cards">
                     {
@@ -30,6 +29,7 @@ const Packages = () => {
                             pack={pack}
                         ></PackageCard>)
                     }
+
                 </div>
             </div>
         </div >

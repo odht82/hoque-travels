@@ -11,6 +11,8 @@ import NotFound from './Components/Pages/NotFound/NotFound';
 import Footer from './Components/Pages/Footer/Footer';
 import Booking from './Components/Pages/Booking/Booking';
 import Packages from "./Components/Pages/Packages/Packages";
+import Details from "./Components/Details";
+
 
 function App() {
   return (
@@ -28,11 +30,14 @@ function App() {
             <Route exact path="/packages">
               <Packages></Packages>
             </Route>
-            <PrivateRoute path="/packages/bookings/:packageId">
+            <PrivateRoute path="/bookings">
               <Booking></Booking>
             </PrivateRoute>
-            <PrivateRoute path="/home-packages/bookings/:homepackageId">
-              <Booking></Booking>
+            <PrivateRoute path="/packages/details/:packageId">
+              <Details></Details>
+            </PrivateRoute>
+            <PrivateRoute path="/home-packages/details/:homepackageId">
+              <Details></Details>
             </PrivateRoute>
             <Route path="/sign-in">
               <SignIn></SignIn>
@@ -55,3 +60,24 @@ function App() {
 export default App;
 
 
+
+
+
+            // <PrivateRoute path="/products/details/:productId">
+            //   <Details></Details>
+            // </PrivateRoute>
+
+
+            // <PrivateRoute path="/services/details/:serviceId">
+            //   <Details></Details>
+            // </PrivateRoute>
+
+
+            // <PrivateRoute path="/home-service/details/:homeServiceId">
+            //   <Details></Details>
+            // </PrivateRoute>
+
+
+            // <PrivateRoute path="/doctors/details/:doctorId">
+            //   <Details></Details>
+            // </PrivateRoute>
