@@ -1,4 +1,4 @@
-.details-card-body{
+.card-body{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,7 +12,7 @@
     top:0px;
     width: 100%;
     padding: 15px;
-    background-color: #099cbd1a;
+    background-color: #2323231a;
     cursor: pointer;
     border-radius: 0px 0px 12px 12px;
 }
@@ -41,10 +41,10 @@
     text-decoration: none;
 }
 .price{
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 42px;
+    font-weight: 900;
     margin: 0px;
-    color: #06C7F2;
+    color: #151515;
 }
 .card-body:hover{
     display: flex;
@@ -52,7 +52,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    box-shadow:0px 0px 20px 5px #049dd923;
+    box-shadow:0px 0px 20px 5px #2c2c2c23;
     padding: 15px;
     border-radius: 12px;
     cursor: pointer;
@@ -62,8 +62,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border:2px solid #06C7F2;
-    color: #06C7F2;
+    border:2px solid #000;
+    color: #000;
     background-color: #fff;
     cursor: pointer;
     width: 100%;
@@ -75,9 +75,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #06C7F2;
+    background-color: #000;
     color: #fff;
-    box-shadow:0px 0px 10px 2px #049dd923;
+    box-shadow:0px 0px 10px 2px #13131323;
     cursor: pointer;
     width: 100%;
 }

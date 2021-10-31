@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 import './DetailsCard.css';
-import { AiFillStar } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const DetailsCard = (props) => {
-    const { name, price, review, special, img, homePrevPath, prevPath } = props.details;
+    const { name, price, place, places, pricetype, duration, image, homePrevPath, prevPath } = props.details;
     console.log(homePrevPath)
     console.log(prevPath)
     return (
@@ -16,26 +15,28 @@ const DetailsCard = (props) => {
                         <CardImg top style={{
                             objectFit: 'cover',
                             borderRadius: '12px'
-                        }} width="100%" src={img} alt="Card image" />
+                        }} width="100%" src={image} alt="Card image" />
                     </div>
                     <div className="details-name-price">
-                        <CardTitle className='details-price price' tag="h1">{name}</CardTitle>
-                        {!price ?
-                            <CardSubtitle style={{ display: 'none' }} tag="h2" className="mb-2 text-muted">${price}</CardSubtitle>
-                            :
-                            <CardSubtitle tag="h2" className="mb-2 text-muted">${price}</CardSubtitle>
-                        }
-                        {!review ?
-                            <CardText tag="h3" style={{ color: '#06C7F2', display: 'flex', alignItems: 'center', marginTop: '10px' }}>{review} <AiFillStar style={{ color: '#06C7F2', height: "18px", width: "18px", alignContent: 'center', marginLeft: '5px' }} /></CardText> :
-                            <CardText tag="h3" style={{ color: '#06C7F2', display: 'flex', alignItems: 'center', marginTop: '10px' }}>{special} </CardText>
-                        }
-                        {!special ?
-                            <CardText tag="p" style={{ color: '#06C7F2', display: 'flex', alignItems: 'center', marginTop: '10px' }}>{review} <AiFillStar style={{ color: '#06C7F2', height: "18px", width: "18px", alignContent: 'center', marginLeft: '5px' }} /></CardText> :
-                            <CardText tag="p" style={{ color: '#06C7F2', display: 'flex', alignItems: 'center', marginTop: '10px' }}>{special}</CardText>
-                        }
+                        <CardTitle className='details-price price' tag="h1">
+                            {name}
+                        </CardTitle>
+                        <CardSubtitle
+                            tag="h2" className="mb-2 text-muted">
+                            ${price}/per {pricetype}
+                        </CardSubtitle>
+                        <CardText tag="h3" style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+                            {place}
+                        </CardText>
+                        <CardText tag="h3" style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+                            {places} Places to visit
+                        </CardText>
+                        <CardText tag="p" style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+                            {duration} Weeks
+                        </CardText>
                     </div>
-                    <Link className="details-button" to={`/home`}>
-                        <Button className='cart-add-btn  btn-secondary'>Go Home</Button>
+                    <Link className="details-button" to={`/bookings`}>
+                        <Button className='cart-add-btn  btn-secondary'>Add to Booking</Button>
                     </Link>
                 </CardBody>
             </Card>
