@@ -14,10 +14,11 @@
     width: 1300px;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 38px;
 }
 .hero-text-container{
-    width: 680px;
+    width: 614px;
     height: 391px;
     display: flex;
     flex-direction: column;
@@ -139,6 +140,8 @@
     font-size: 16px;
     line-height: 21px;    
     color: #000000;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .popular-two{
     font-weight: 500;
@@ -146,6 +149,8 @@
     line-height: 21px;    
     margin-left: 8px;
     color: #000000;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .popular-three{
     font-weight: 600;
@@ -153,6 +158,8 @@
     line-height: 21px;
     margin-left: 8px;
     color: #FF844B;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .popular-four{
     margin-left: 8px;
@@ -160,6 +167,8 @@
     font-size: 16px;
     line-height: 21px;    
     color: #000000;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 

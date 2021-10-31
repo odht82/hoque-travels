@@ -22,7 +22,7 @@ const DetailsCard = (props) => {
                             {name}
                         </CardTitle>
                         <CardSubtitle
-                            tag="h2" className="mb-2 text-muted">
+                            tag="h2" className="">
                             ${price}/per {pricetype}
                         </CardSubtitle>
                         <CardText tag="h3" style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>

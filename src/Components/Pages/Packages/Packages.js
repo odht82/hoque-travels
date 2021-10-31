@@ -5,7 +5,7 @@ const Packages = () => {
     const [packages, setPackages] = useState([]);
 
     useEffect(() => {
-        fetch('https://pure-island-82181.herokuapp.com/packages')
+        fetch('http://localhost:5000/packages')
             .then(res => res.json())
             .then(data => setPackages(data));
     }, [])
