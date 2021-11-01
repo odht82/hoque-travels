@@ -4,7 +4,6 @@ import Activities from '../Activities/Activities';
 import HomePackages from '../HomePackages/HomePackages';
 import Suggestion from '../Suggestion/Suggestion';
 import Revies from '../Review/Review';
-import Loading from '../../Loading';
 
 function Home() {
   return (
