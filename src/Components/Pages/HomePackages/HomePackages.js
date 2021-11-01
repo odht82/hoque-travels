@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import HomePackageCard from './HomePackageCard/HomePackageCard';
 import './HomePackages.css';
 import { NavLink } from 'react-router-dom';
+import Loading from '../../Loading';
 const HomePackages = () => {
     const [packages, setPackages] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
-            .then(data => setPackages(data));
-    }, [])
+            .then(data => setPackages(data) && setLoading(true));
+    }, [loading])
     console.log(packages)
 
     return (
@@ -26,15 +28,17 @@ const HomePackages = () => {
                         <button className="all-home-pckg-btn">View Packages</button>
                     </NavLink>
                 </div>
-                <div className="home-pckg-cards">
-                    {
-                        packages.slice(-6).map(pack => <HomePackageCard
-                            key={pack._id}
-                            pack={pack}
-                        ></HomePackageCard>)
-                    }
-
-                </div>
+                {!loading ?
+                    (<div className="home-pckg-cards">
+                        {packages.slice(-6).map(pack =>
+                            <HomePackageCard
+                                key={pack._id}
+                                pack={pack}
+                            ></HomePackageCard>)}
+                    </div>)
+                    :
+                    <Loading></Loading>
+                }
             </div>
         </div >
     );

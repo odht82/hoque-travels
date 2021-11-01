@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../../Loading';
 import PackageCard from './PackageCard/PackageCard';
 import './Packages.css';
 const Packages = () => {
     const [packages, setPackages] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
-            .then(data => setPackages(data));
-    }, [])
+            .then(data => setPackages(data) && setLoading(true));
+    }, [loading])
     console.log(packages)
+    console.log(loading)
 
     return (
         <div className="package">
@@ -22,15 +25,18 @@ const Packages = () => {
                         <p className="package-desc">Get the full package experience included with all of your needs on the trips</p>
                     </div>
                 </div>
-                <div className="package-cards">
-                    {
-                        packages.map(pack => <PackageCard
-                            key={pack._id}
-                            pack={pack}
-                        ></PackageCard>)
-                    }
-
-                </div>
+                {!loading ?
+                    (<div className="package-cards">
+                        {packages.map(pack =>
+                            <PackageCard
+                                key={pack._id}
+                                pack={pack}
+                            ></PackageCard>
+                        )}
+                    </div>)
+                    :
+                    <Loading></Loading>
+                }
             </div>
         </div >
     );

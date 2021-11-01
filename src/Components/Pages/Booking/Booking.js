@@ -3,15 +3,17 @@ import './Booking.css';
 import BookingCard from './BookingCard/BookingCard';
 import "./css/ui.css";
 import "./css/responsive.css";
+import Loading from '../../Loading';
 
 const Booking = () => {
     const [bookings, setBookings] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
-            .then(data => setBookings(data));
-    }, [])
+            .then(data => setBookings(data) && setLoading(true));
+    }, [loading])
 
     console.log(bookings);
 
@@ -38,14 +40,15 @@ const Booking = () => {
                                             <div className="heading-lavel-three"> </div>
                                         </div>
                                     </div>
-                                    <div className="table-body">
-                                        {
-                                            bookings.map(book => <BookingCard
-                                                key={book._id}
-                                                book={book}
-                                            ></BookingCard>)
-                                        }
-                                    </div>
+                                    {!loading ?
+                                        <div className="table-body">
+                                            {
+                                                bookings.map(book => <BookingCard
+                                                    key={book._id}
+                                                    book={book}
+                                                ></BookingCard>)
+                                            }
+                                        </div> : <Loading></Loading>}
                                 </div>
 
                                 <div className="card-bdy">
