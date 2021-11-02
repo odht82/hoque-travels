@@ -7,28 +7,28 @@ import Loading from '../../Loading';
 
 const Booking = () => {
     const [packages, setPackages] = useState([]);
-    const [loadbookings, setLoadbookings] = useState([]);
+    const [bookings, setBookings] = useState([]);
     const [loadpackages, setLoadpackages] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
             .then(data => setPackages(data))
-            .finally(data => setLoading(true));
+            .finally(data => setLoading(false));
     }, [])
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/bookings')
             .then(res => res.json())
-            .then(data => setLoadbookings(data))
-            .finally(data => setLoading(true));
-    }, [loadbookings])
+            .then(data => setBookings(data))
+            .finally(data => setLoading(false));
+    }, [loading])
 
     useEffect(() => {
         if (packages) {
             const storedBook = [];
-            const savedPackages = loadbookings;
+            const savedPackages = bookings;
             const savedBook = savedPackages.map(obj => obj.key);
             const packets = packages.map(b => b);
             for (const key in savedBook) {
@@ -39,7 +39,7 @@ const Booking = () => {
             }
             setLoadpackages(storedBook)
         }
-    }, [packages, loadbookings]);
+    }, [packages, bookings]);
 
     // Delet Booking
     const handleDeleteBooking = _id => {
@@ -54,7 +54,7 @@ const Booking = () => {
                     if (data.deletedCount > 0) {
                         alert('deleted successfully');
                         const remainingBookings = loadpackages.filter(booking => booking._id !== _id);
-                        setLoadbookings(remainingBookings);
+                        setBookings(remainingBookings);
                     }
                     // console.log(data)
                     // console.log(data)
@@ -86,10 +86,10 @@ const Booking = () => {
                                         </div>
                                     </div>
                                     {loadpackages && <div>
-                                        {loading ?
+                                        {!loading ?
                                             <div className="table-body">
                                                 {
-                                                    loadpackages.map(book => <BookingCard
+                                                    packages.map(book => <BookingCard
                                                         key={book._id}
                                                         book={book}
                                                         handleDeleteBooking={handleDeleteBooking}
@@ -99,7 +99,7 @@ const Booking = () => {
                                     </div>}
 
 
-                                    {/* {loading ?
+                                    {/* {!loading ?
                                         <div className="table-body">
                                             {
                                                 bookings.map(book => <BookingCard

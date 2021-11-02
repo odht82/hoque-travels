@@ -8,7 +8,7 @@ const Details = () => {
     const { packageId, homepackageId } = useParams();
     const [packages, setPackages] = useState({});
     const [homepackages, setHomepackages] = useState({});
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const location = useLocation();
     let local = location.pathname.split('/')
@@ -21,17 +21,15 @@ const Details = () => {
         fetch(`https://pure-island-82181.herokuapp.com/packages/${packageId}`)
             .then(res => res.json())
             .then(data => setPackages(data))
-            .finally(data => setLoading(true));
-    }, [packageId]);
+            .finally(data => setLoading(false));
+    }, [packageId, loading]);
 
     useEffect(() => {
         fetch(`https://pure-island-82181.herokuapp.com/packages/${homepackageId}`)
             .then(res => res.json())
             .then(data => setHomepackages(data))
-            .finally(setLoading(true));
-    }, [homepackageId]);
-
-    console.log(packages)
+            .finally(setLoading(false));
+    }, [homepackageId, loading]);
 
 
     return (
@@ -42,7 +40,7 @@ const Details = () => {
                         {pathPrefix}
                     </h2>
                     {packageId &&
-                        (loading ?
+                        (!loading ?
                             <div className="details-list-section">
                                 <DetailsCard
                                     key={packages._id}
@@ -56,7 +54,7 @@ const Details = () => {
                             <Loading></Loading>)
                     }
                     {homepackageId &&
-                        (loading ?
+                        (!loading ?
                             <div className="details-list-section">
                                 <DetailsCard
                                     key={homepackages._id}

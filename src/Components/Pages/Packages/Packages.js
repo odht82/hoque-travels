@@ -4,13 +4,13 @@ import PackageCard from './PackageCard/PackageCard';
 import './Packages.css';
 const Packages = () => {
     const [packages, setPackages] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
             .then(data => setPackages(data))
-            .finally(data => setLoading(true))
+            .finally(data => setLoading(false))
     }, [packages])
     // console.log(packages)
     // console.log(loading)
@@ -26,7 +26,7 @@ const Packages = () => {
                         <p className="package-desc">Get the full package experience included with all of your needs on the trips</p>
                     </div>
                 </div>
-                {loading ?
+                {!loading ?
 
                     (<div className="package-cards">
                         {packages.map(pack =>

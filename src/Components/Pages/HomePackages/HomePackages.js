@@ -5,15 +5,15 @@ import { NavLink } from 'react-router-dom';
 import Loading from '../../Loading';
 const HomePackages = () => {
     const [packages, setPackages] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
             .then(data => setPackages(data))
-            .finally(data => setLoading(true))
-    }, [])
+            .finally(data => setLoading(false))
+    }, [loading])
     console.log(packages)
 
     return (
@@ -30,7 +30,7 @@ const HomePackages = () => {
                         <button className="all-home-pckg-btn">View Packages</button>
                     </NavLink>
                 </div>
-                {loading ?
+                {!loading ?
                     (<div className="home-pckg-cards">
                         {packages.slice(-6).map(pack =>
                             <HomePackageCard

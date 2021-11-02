@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 
 const DetailsCard = (props) => {
     const { user } = useAuth();
-    const { _id, name, price, place, places, pricetype, duration, image, homePrevPath, prevPath } = props.details;
-    console.log(homePrevPath)
-    console.log(prevPath)
+    const { _id, name, price, place, places, pricetype, duration, image, } = props.details;
 
     const handleAddBooking = e => {
         const key = _id;
