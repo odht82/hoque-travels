@@ -5,6 +5,11 @@ import DetailsCard from './DetailsCard';
 import Loading from './Loading';
 
 const Details = () => {
+    const { packageId, homepackageId } = useParams();
+    const [packages, setPackages] = useState({});
+    const [homepackages, setHomepackages] = useState({});
+    const [loading, setLoading] = useState(false);
+
     const location = useLocation();
     let local = location.pathname.split('/')
     let prevPath = '/' + local[1];
@@ -12,23 +17,22 @@ const Details = () => {
     let pathPrefix = local[1];
     // console.log(prevPath);
 
-
-    const { packageId, homepackageId } = useParams();
-    const [packages, setPackages] = useState({});
-    const [homepackages, setHomepackages] = useState({});
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         fetch(`https://pure-island-82181.herokuapp.com/packages/${packageId}`)
             .then(res => res.json())
-            .then(data => setPackages(data) && setLoading(true));
+            .then(data => setPackages(data))
+            .finally(data => setLoading(true));
     }, [packageId]);
 
     useEffect(() => {
         fetch(`https://pure-island-82181.herokuapp.com/packages/${homepackageId}`)
             .then(res => res.json())
-            .then(data => setHomepackages(data) && setLoading(true));
+            .then(data => setHomepackages(data))
+            .finally(setLoading(true));
     }, [homepackageId]);
+
+    console.log(packages)
+
 
     return (
         <>
@@ -38,10 +42,10 @@ const Details = () => {
                         {pathPrefix}
                     </h2>
                     {packageId &&
-                        (!loading ?
+                        (loading ?
                             <div className="details-list-section">
                                 <DetailsCard
-                                    key={packages.key}
+                                    key={packages._id}
                                     details={packages}
                                     prevPath={prevPath}
                                     review={true}
@@ -52,10 +56,10 @@ const Details = () => {
                             <Loading></Loading>)
                     }
                     {homepackageId &&
-                        (!loading ?
+                        (loading ?
                             <div className="details-list-section">
                                 <DetailsCard
-                                    key={homepackages.key}
+                                    key={homepackages._id}
                                     details={homepackages}
                                     homePrevPath={homePrevPath}
                                     review={false}

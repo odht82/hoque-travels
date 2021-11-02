@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 const SignIn = () => {
     const {
         user,
-        signInUsingGoogle, } = useAuth();
+        signInUsingGoogle } = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_uri = location.state?.from || '/sign-in';

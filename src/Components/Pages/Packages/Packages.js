@@ -11,10 +11,9 @@ const Packages = () => {
             .then(res => res.json())
             .then(data => setPackages(data))
             .finally(data => setLoading(true))
-        // .then(data => setPackages(data) && setLoading(true));
-    }, [loading])
-    console.log(packages)
-    console.log(loading)
+    }, [packages])
+    // console.log(packages)
+    // console.log(loading)
 
     return (
         <div className="package">

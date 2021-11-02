@@ -1,12 +1,37 @@
 import React from 'react';
 import { Button, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 import './DetailsCard.css';
+import useAuth from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 const DetailsCard = (props) => {
-    const { name, price, place, places, pricetype, duration, image, homePrevPath, prevPath } = props.details;
+    const { user } = useAuth();
+    const { _id, name, price, place, places, pricetype, duration, image, homePrevPath, prevPath } = props.details;
     console.log(homePrevPath)
     console.log(prevPath)
+
+    const handleAddBooking = e => {
+        const key = _id;
+        const email = user.email;
+
+        const newBooking = { key, email };
+
+        fetch('https://pure-island-82181.herokuapp.com/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newBooking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Successfully added the Booking.')
+                }
+            })
+        e.preventDefault();
+    }
+
     return (
         <div>
             <Card>
@@ -36,7 +61,7 @@ const DetailsCard = (props) => {
                         </CardText>
                     </div>
                     <Link className="details-button" to={`/bookings`}>
-                        <Button className='cart-add-btn  btn-secondary'>Add to Booking</Button>
+                        <Button className='cart-add-btn  btn-secondary' onClick={handleAddBooking}>Add to Booking</Button>
                     </Link>
                 </CardBody>
             </Card>

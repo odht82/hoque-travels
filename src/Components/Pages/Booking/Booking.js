@@ -6,16 +6,61 @@ import "./css/responsive.css";
 import Loading from '../../Loading';
 
 const Booking = () => {
-    const [bookings, setBookings] = useState([]);
+    const [packages, setPackages] = useState([]);
+    const [loadbookings, setLoadbookings] = useState([]);
+    const [loadpackages, setLoadpackages] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
-            .then(data => setBookings(data) && setLoading(true));
-    }, [loading])
+            .then(data => setPackages(data))
+            .finally(data => setLoading(true));
+    }, [])
 
-    console.log(bookings);
+    useEffect(() => {
+        fetch('https://pure-island-82181.herokuapp.com/bookings')
+            .then(res => res.json())
+            .then(data => setLoadbookings(data))
+            .finally(data => setLoading(true));
+    }, [loadbookings])
+
+    useEffect(() => {
+        if (packages) {
+            const storedBook = [];
+            const savedPackages = loadbookings;
+            const savedBook = savedPackages.map(obj => obj.key);
+            const packets = packages.map(b => b);
+            for (const key in savedBook) {
+                const bookedPackages = packets.find(pack => pack._id === savedBook[key]);
+                storedBook.push(bookedPackages);
+
+                // console.log(bookedPackages, "hello")
+            }
+            setLoadpackages(storedBook)
+        }
+    }, [packages, loadbookings]);
+
+    // Delet Booking
+    const handleDeleteBooking = _id => {
+        const proceed = window.confirm('Are you sure, you want to delete?');
+        if (proceed) {
+            const url = `https://pure-island-82181.herokuapp.com/bookings/${_id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully');
+                        const remainingBookings = loadpackages.filter(booking => booking._id !== _id);
+                        setLoadbookings(remainingBookings);
+                    }
+                    // console.log(data)
+                    // console.log(data)
+                });
+        }
+    };
 
     return (
         <div className="App">
@@ -40,15 +85,30 @@ const Booking = () => {
                                             <div className="heading-lavel-three"> </div>
                                         </div>
                                     </div>
-                                    {!loading ?
+                                    {loadpackages && <div>
+                                        {loading ?
+                                            <div className="table-body">
+                                                {
+                                                    loadpackages.map(book => <BookingCard
+                                                        key={book._id}
+                                                        book={book}
+                                                        handleDeleteBooking={handleDeleteBooking}
+                                                    ></BookingCard>)
+                                                }
+                                            </div> : <Loading></Loading>}
+                                    </div>}
+
+
+                                    {/* {loading ?
                                         <div className="table-body">
                                             {
                                                 bookings.map(book => <BookingCard
                                                     key={book._id}
                                                     book={book}
+                                                    handleDeleteBooking={handleDeleteBooking}
                                                 ></BookingCard>)
                                             }
-                                        </div> : <Loading></Loading>}
+                                        </div> : <Loading></Loading>} */}
                                 </div>
 
                                 <div className="card-bdy">
@@ -125,3 +185,43 @@ const Booking = () => {
 };
 
 export default Booking;
+
+
+
+// const AddUser = () => {
+//     const nameRef = useRef();
+//     const emailRef = useRef();
+
+//     const handleAddBooking = e => {
+//         const name = nameRef.current.value;
+//         const email = emailRef.current.value;
+
+//         const newBooking = { name, email };
+
+//         fetch('http://localhost:5000/bookings', {
+//             method: 'POST',
+//             headers: {
+//                 'content-type': 'application/json'
+//             },
+//             body: JSON.stringify(newBooking)
+//         })
+//             .then(res => res.json())
+//             .then(data => {
+//                 if (data.insertedId) {
+//                     alert('Successfully added the Booking.')
+//                     e.target.reset();
+//                 }
+//             })
+//         e.preventDefault();
+//     }
+//     return (
+//         <div>
+//             <h2>Please Add an User</h2>
+//             <form onSubmit={handleAddBooking}>
+//                 <input type="text" ref={nameRef} />
+//                 <input type="email" name="" id="" ref={emailRef} />
+//                 <input type="submit" value="Add" />
+//             </form>
+//         </div>
+//     );
+// };

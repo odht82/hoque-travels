@@ -23,7 +23,7 @@ const BookingCard = (props) => {
                     </div>
                 </div>
                 <div className="text-right">
-                    <button className="btn-danger">Remove</button>
+                    <button className="btn-danger" onClick={() => props.handleDeleteBooking(props.book._id)}>Remove</button>
                 </div>
             </div>
         </section>

@@ -7,18 +7,13 @@ const HomePackages = () => {
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     fetch('https://pure-island-82181.herokuapp.com/packages')
-    //         .then(res => res.json())
-    //         .then(data => setPackages(data) && setLoading(true));
-    // }, [loading])
+
     useEffect(() => {
         fetch('https://pure-island-82181.herokuapp.com/packages')
             .then(res => res.json())
             .then(data => setPackages(data))
             .finally(data => setLoading(true))
-        // .then(data => setPackages(data) && setLoading(true));
-    }, [loading])
+    }, [])
     console.log(packages)
 
     return (
